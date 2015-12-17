@@ -1,0 +1,23 @@
+Import('env')
+
+Import('env', 'GlobalVars')
+buildEnv = env.Clone()
+
+testApplicationName = "unitTestRunner"
+testPath='Tests'
+buildDir='build\\%s-%s\\%s' %(buildEnv['NAME'],buildEnv['CCVERSION'], testPath)
+buildEnv.VariantDir(buildDir,'Tests/TestCases',duplicate=0)
+
+Tests=[Glob(buildDir+'\*.t.h')]
+
+opt1='--template='+'Tests/TestCases/TestMain.tpl'
+opt2="--main=pppp"
+testAppliPath='%s/%s/%s' % (buildEnv['OUTPUTDIR'],buildEnv['config'],testApplicationName)
+
+(library, lib_include_path) = SConscript('SConscript',exports={'env':buildEnv,'GlobalVars':GlobalVars})
+
+buildEnv.Append(CPPPATH = lib_include_path)
+buildEnv.Append(LIBS = library)
+
+testAppli = buildEnv.CxxTest(testAppliPath,[buildDir+'/testmain.cpp']+Tests, CXXTEST_OPTS=opt2)
+Return ('testAppli')
