@@ -1,6 +1,8 @@
+import os
 Import('env')
-
 Import('env', 'GlobalVars')
+from subprocess import call
+
 buildEnv = env.Clone()
 
 testApplicationName = "unitTestRunner"
@@ -14,10 +16,26 @@ opt1='--template='+'Tests/TestCases/TestMain.tpl'
 opt2="--main=pppp"
 testAppliPath='%s/%s/%s' % (buildEnv['OUTPUTDIR'],buildEnv['config'],testApplicationName)
 
-(library, lib_include_path) = SConscript('SConscript',exports={'env':buildEnv,'GlobalVars':GlobalVars})
+
+(library, lib_include_path, lib_build_dir) = SConscript('SConscript',exports={'env':buildEnv,'GlobalVars':GlobalVars})
 
 buildEnv.Append(CPPPATH = lib_include_path)
 buildEnv.Append(LIBS = library)
 
 testAppli = buildEnv.CxxTest(testAppliPath,[buildDir+'/testmain.cpp']+Tests, CXXTEST_OPTS=opt2)
+
+def ExecuteAppli(env, target, source):
+	for file in Glob(env['variant_dir']+'\*.gcda'):
+		env.Execute(Command(file, '',[Delete("$TARGET")]))
+	
+	env.Execute('%s'%source[0])
+
+ 	if env['coverage']>0:
+ 		for file in Glob(env['variant_dir']+'\*.gcda'):
+ 			call("gcov %s"%file)
+
+runTestCommand = env.Command( None, testAppli,ExecuteAppli, variant_dir=lib_build_dir)
+
+Depends(runTestCommand, testAppli)
+
 Return ('testAppli')
