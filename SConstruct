@@ -40,8 +40,8 @@ buildTestEnv = Environment(variables=vars,
 							  LIBS = ['gmock', 'gcov'],
 							  ENV = {'PATH' : GlobalVars['PYTHON_PATH']},
 					          NAME='mingw',
-					          OUTPUTDIR='Bin'
-#                               CCVERSION=1
+					          OUTPUTDIR='Bin',
+                              CCVERSION=1
 							  )
 				  
 if ARGUMENTS.get('tests') == '1':
