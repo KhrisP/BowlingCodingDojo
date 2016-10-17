@@ -3,3 +3,4 @@
 /.sconsign.dblite
 /build/
 /StandardFrame.cpp.gcov
+/Game.cpp.gcov

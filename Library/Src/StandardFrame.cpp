@@ -1,8 +1,3 @@
-/*
- * StandardFrame.cpp
- *
- */
-
 #include "StandardFrame.h"
 
 namespace BowlingGame
