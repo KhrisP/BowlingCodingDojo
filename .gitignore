@@ -1,3 +1,5 @@
 /LocalConfig.pyc
 /Bin/
 /.sconsign.dblite
+/build/
+/StandardFrame.cpp.gcov
