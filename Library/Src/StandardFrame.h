@@ -12,6 +12,7 @@ public:
 
 	unsigned char GetFirstRoll() const;
 	unsigned char GetSecondRoll() const;
+	unsigned char GetScore() const;
 
 private:
 	unsigned char _firstRoll;

@@ -30,5 +30,10 @@ unsigned char StandardFrame::GetSecondRoll() const
 	return _secondRoll;
 }
 
+unsigned char StandardFrame::GetScore() const
+{
+	return _firstRoll + _secondRoll;
+}
+
 
 }
