@@ -19,7 +19,19 @@ public:
     void testScoreIs0WithOnlyGutters(void)
     {
     	AddGutters(10);
+
     	TS_ASSERT_EQUALS(_uut->Score(), 0);
+    }
+
+    void testScoreIsTheTotalOfFrameScores()
+    {
+		_uut->AddFrame(1, 1);
+		_uut->AddFrame(2, 2);
+		_uut->AddFrame(3, 3);
+		AddGutters(7);
+
+    	TS_ASSERT_EQUALS(_uut->Score(), 12);
+
     }
 
 private:

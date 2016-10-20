@@ -6,6 +6,10 @@
 #ifndef GAME
 #define GAME
 
+
+#include "frame.h"
+#include <vector>
+
 namespace BowlingGame
 {
 
@@ -19,6 +23,9 @@ public:
 	void AddFrame(unsigned char firstRoll, unsigned char secondRoll);
 
 private:
+
+	std::vector<Frame> _frames;
+
 
 };
 

@@ -15,12 +15,18 @@ Game::~Game()
 
 unsigned char Game::Score() const
 {
-	return 0;
+	unsigned char score = 0;
+
+	for(Frame const &frame : _frames)
+	{
+		score += frame.Score();
+	}
+	return score;
 }
 
 void Game::AddFrame(unsigned char firstRoll, unsigned char secondRoll)
 {
-
+	_frames.push_back(Frame(firstRoll, secondRoll));
 }
 
 

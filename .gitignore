@@ -5,3 +5,14 @@
 /StandardFrame.cpp.gcov
 /Game.cpp.gcov
 /Frame.cpp.gcov
+/alloc_traits.h.gcov
+/allocator.h.gcov
+/move.h.gcov
+/new.gcov
+/new_allocator.h.gcov
+/stl_algobase.h.gcov
+/stl_construct.h.gcov
+/stl_iterator.h.gcov
+/stl_uninitialized.h.gcov
+/stl_vector.h.gcov
+/vector.tcc.gcov

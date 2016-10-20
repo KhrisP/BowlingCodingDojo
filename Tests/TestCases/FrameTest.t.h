@@ -3,7 +3,7 @@
 
 #include <cxxtest/TestSuite.h>
 
-#include "../../Library/Src/Frame.h"
+#include "../../Library/Include/Frame.h"
 
 class StandardFrameTests : public CxxTest::TestSuite
 {
