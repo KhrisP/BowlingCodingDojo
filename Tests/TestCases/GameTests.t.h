@@ -34,12 +34,32 @@ public:
 
     }
 
+    void testBonusOfNextFirstRollIsAddedForSpare()
+    {
+    	AddSpare(4);
+    	AddFrame(2, 4);
+    	AddGutters(8);
+
+    	TS_ASSERT_EQUALS(_uut->Score(), 18);
+
+    }
+
 private:
 
     void AddGutters(unsigned char number)
     {
     	for(auto roll=0; roll<number; roll++)
     		_uut->AddFrame(0,0);
+    }
+
+    void AddSpare(unsigned char firstRoll)
+    {
+   		_uut->AddFrame(firstRoll, 10 - firstRoll);
+    }
+
+    void AddFrame(unsigned char first, unsigned char second)
+    {
+ 		_uut->AddFrame(first,second);
     }
 
     BowlingGame::Game *_uut;

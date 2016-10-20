@@ -17,9 +17,14 @@ unsigned char Game::Score() const
 {
 	unsigned char score = 0;
 
-	for(Frame const &frame : _frames)
+	for(auto index = 0; index < _frames.size(); index++)
 	{
-		score += frame.Score();
+		score += _frames[index].Score();
+		if(_frames[index].IsSpare() && index < _frames.size() - 1)
+		{
+			score += _frames[index + 1].FirstRoll();
+		}
+
 	}
 	return score;
 }
