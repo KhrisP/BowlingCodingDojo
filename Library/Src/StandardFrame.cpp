@@ -30,5 +30,9 @@ unsigned char StandardFrame::GetScore() const
 	return _firstRoll + _secondRoll;
 }
 
+bool StandardFrame::IsSpare() const
+{
+	return GetScore() == 10;
+}
 
 }

@@ -14,6 +14,8 @@ public:
 	unsigned char GetSecondRoll() const;
 	unsigned char GetScore() const;
 
+	bool IsSpare() const;
+
 private:
 	unsigned char _firstRoll;
 	unsigned char _secondRoll;
