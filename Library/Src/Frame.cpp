@@ -32,7 +32,7 @@ unsigned char Frame::Score() const
 
 bool Frame::IsSpare() const
 {
-	return Score() == 10;
+	return Score() == 10 && !IsStrike();
 }
 
 bool Frame::IsStrike() const

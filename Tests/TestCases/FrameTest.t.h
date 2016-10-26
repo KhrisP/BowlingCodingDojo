@@ -41,6 +41,7 @@ public:
     	BowlingGame::Frame Frame(10,0);
 
         TS_ASSERT_EQUALS(Frame.IsStrike(), true);
+        TS_ASSERT_EQUALS(Frame.IsSpare(), false);
     }
     void testFrameWithout10PinsDownAtFirstRollIsNotStrike()
     {
