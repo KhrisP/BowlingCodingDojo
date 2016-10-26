@@ -15,6 +15,7 @@ public:
 	unsigned char Score() const;
 
 	bool IsSpare() const;
+	bool IsStrike() const;
 
 private:
 	unsigned char _firstRoll;

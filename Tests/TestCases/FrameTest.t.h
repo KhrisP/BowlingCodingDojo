@@ -36,6 +36,19 @@ public:
         TS_ASSERT_EQUALS(Frame.IsSpare(), false);
 
     }
+    void testStrikeIs10PinsDownAtTheFirstRoll()
+    {
+    	BowlingGame::Frame Frame(10,0);
+
+        TS_ASSERT_EQUALS(Frame.IsStrike(), true);
+    }
+    void testFrameWithout10PinsDownAtFirstRollIsNotStrike()
+    {
+    	BowlingGame::Frame Frame(5,5);
+
+        TS_ASSERT_EQUALS(Frame.IsStrike(), false);
+
+    }
 };
 
 

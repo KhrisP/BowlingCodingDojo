@@ -4,3 +4,5 @@
 2- a game consists of 10 frames. The score is the total of the frames' score
 
 3- A spare is when all the 10 pins are down in two tries.  The bonus is the score done by the next roll.   
+
+4- A strike is when all the pins are down a the first try. The bonus is the score done by the 2 next rolls

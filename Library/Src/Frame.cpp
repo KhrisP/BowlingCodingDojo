@@ -35,4 +35,9 @@ bool Frame::IsSpare() const
 	return Score() == 10;
 }
 
+bool Frame::IsStrike() const
+{
+	return _firstRoll == 10;
+}
+
 }
