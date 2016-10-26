@@ -1,13 +1,17 @@
 #include "Frame.h"
 
+#include<cassert>
+
 namespace BowlingGame
 {
+
+const unsigned char Frame::MAX_PINS = 10;
 
 Frame::Frame(unsigned char firstRoll, unsigned char secondRoll):
 		_firstRoll(firstRoll),
 		_secondRoll(secondRoll)
 {
-
+	assert(_firstRoll + _secondRoll <= MAX_PINS);
 }
 
 Frame::~Frame()
@@ -32,12 +36,12 @@ unsigned char Frame::Score() const
 
 bool Frame::IsSpare() const
 {
-	return Score() == 10 && !IsStrike();
+	return Score() == MAX_PINS && !IsStrike();
 }
 
 bool Frame::IsStrike() const
 {
-	return _firstRoll == 10;
+	return _firstRoll == MAX_PINS;
 }
 
 }

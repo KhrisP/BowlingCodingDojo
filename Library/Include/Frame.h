@@ -7,6 +7,8 @@ namespace BowlingGame
 class Frame
 {
 public:
+	static const unsigned char MAX_PINS;
+
 	Frame(unsigned char firstRoll, unsigned char secondRoll);
 	~Frame();
 
