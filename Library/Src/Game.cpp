@@ -20,9 +20,9 @@ unsigned char Game::Score() const
 	for(auto index = 0; index < _frames.size(); index++)
 	{
 		score += _frames[index].Score();
-		if(_frames[index].IsSpare() && index < _frames.size() - 1)
+		if(_frames[index].IsSpare())
 		{
-			score += _frames[index + 1].FirstRoll();
+			score += GetBonusForSpare(index);
 		}
 
 	}
@@ -34,6 +34,12 @@ void Game::AddFrame(unsigned char firstRoll, unsigned char secondRoll)
 	_frames.push_back(Frame(firstRoll, secondRoll));
 }
 
+unsigned char Game::GetBonusForSpare(std::size_t index) const
+{
+	bool nextFrameAvailable = index < _frames.size();
+
+	return nextFrameAvailable ? _frames[index + 1].FirstRoll() : 0;
+}
 
 }
 

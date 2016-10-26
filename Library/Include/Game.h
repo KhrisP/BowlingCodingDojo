@@ -8,6 +8,7 @@
 
 
 #include "frame.h"
+#include <cstddef>
 #include <vector>
 
 namespace BowlingGame
@@ -24,6 +25,7 @@ public:
 
 private:
 
+	unsigned char GetBonusForSpare(std::size_t index) const;
 	std::vector<Frame> _frames;
 
 
