@@ -17,9 +17,9 @@ Game::~Game()
 	// TODO Auto-generated destructor stub
 }
 
-unsigned char Game::Score() const
+unsigned short Game::Score() const
 {
-	unsigned char score = 0;
+	unsigned short score = 0;
 
 	for(auto index = 0; index < _frames.size(); index++)
 	{

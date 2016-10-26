@@ -72,12 +72,27 @@ public:
 
     }
 
+    void testMaximumScoreIs300()
+    {
+    	AddStrikes(9);
+    	AddStrikeAsLastFrame(10);
+
+    	TS_ASSERT_EQUALS(_uut->Score(), 300);
+
+    }
+
 private:
 
     void AddGutters(unsigned char number)
     {
     	for(auto roll=0; roll<number; roll++)
     		_uut->AddFrame(0,0);
+    }
+
+    void AddStrikes(unsigned char number)
+    {
+    	for(auto roll=0; roll<number; roll++)
+    		_uut->AddFrame(10,0);
     }
 
     void AddSpare(unsigned char firstRoll)

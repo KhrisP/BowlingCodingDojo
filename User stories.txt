@@ -9,3 +9,4 @@
 
 5- In the 10th frame, if a spare or a strike is done, an extra roll is given to the player. The last frame may content 3 rolls.
 
+6- The maximum score is 300.
