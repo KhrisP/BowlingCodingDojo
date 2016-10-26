@@ -6,3 +6,6 @@
 3- A spare is when all the 10 pins are down in two tries.  The bonus is the score done by the next roll.   
 
 4- A strike is when all the pins are down a the first try. The bonus is the score done by the 2 next rolls
+
+5- In the 10th frame, if a spare or a strike is done, an extra roll is given to the player. The last frame may content 3 rolls.
+

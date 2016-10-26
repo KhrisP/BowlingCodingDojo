@@ -52,6 +52,14 @@ public:
     	TS_ASSERT_EQUALS(_uut->Score(), 22);
 
     }
+    void testSpareAsLastFrame()
+    {
+    	AddGutters(9);
+    	AddSpareAsLastFrame(4,8);
+
+    	TS_ASSERT_EQUALS(_uut->Score(), 26);
+
+    }
 
 private:
 
@@ -64,6 +72,10 @@ private:
     void AddSpare(unsigned char firstRoll)
     {
    		_uut->AddFrame(firstRoll, 10 - firstRoll);
+    }
+    void AddSpareAsLastFrame(unsigned char firstRoll, unsigned char extraBallScore)
+    {
+   		_uut->AddSpareAsLastFrame(firstRoll, extraBallScore);
     }
 
     void AddStrike()

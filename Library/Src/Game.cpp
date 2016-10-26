@@ -1,7 +1,11 @@
 #include "Game.h"
 
+#include <cassert>
+
 namespace BowlingGame
 {
+
+const unsigned char Game::MAX_FRAMES = 10;
 
 Game::Game()
 {
@@ -35,7 +39,17 @@ unsigned char Game::Score() const
 
 void Game::AddFrame(unsigned char firstRoll, unsigned char secondRoll)
 {
+	assert(_frames.size() < MAX_FRAMES);
+
 	_frames.push_back(Frame(firstRoll, secondRoll));
+}
+
+void Game::AddSpareAsLastFrame(unsigned char firstRoll, unsigned char extraBallScore)
+{
+	assert(_frames.size() == MAX_FRAMES - 1);
+
+	_frames.push_back(Frame(firstRoll, Frame::MAX_PINS - firstRoll));
+	_frames.push_back(Frame(extraBallScore, 0));
 }
 
 unsigned char Game::GetBonusForSpare(std::size_t index) const
