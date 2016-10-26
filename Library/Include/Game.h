@@ -26,6 +26,7 @@ public:
 	unsigned char Score() const;
 	void AddFrame(unsigned char firstRoll, unsigned char secondRoll);
 	void AddSpareAsLastFrame(unsigned char firstRoll, unsigned char extraBallScore);
+	void AddStrikeAsLastFrame(unsigned char extraBallScore);
 
 private:
 

@@ -52,6 +52,14 @@ void Game::AddSpareAsLastFrame(unsigned char firstRoll, unsigned char extraBallS
 	_frames.push_back(Frame(extraBallScore, 0));
 }
 
+void Game::AddStrikeAsLastFrame(unsigned char extraBallScore)
+{
+	assert(_frames.size() == MAX_FRAMES - 1);
+
+	_frames.push_back(Frame(Frame::MAX_PINS, 0));
+	_frames.push_back(Frame(extraBallScore, 0));
+}
+
 unsigned char Game::GetBonusForSpare(std::size_t index) const
 {
 	bool nextFrameAvailable = index < _frames.size();

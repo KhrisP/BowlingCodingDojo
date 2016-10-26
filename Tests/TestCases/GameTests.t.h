@@ -43,6 +43,7 @@ public:
     	TS_ASSERT_EQUALS(_uut->Score(), 18);
 
     }
+
     void testBonusForStrikeIsTheNext2Rolls()
     {
     	AddStrike();
@@ -52,10 +53,20 @@ public:
     	TS_ASSERT_EQUALS(_uut->Score(), 22);
 
     }
+
     void testSpareAsLastFrame()
     {
     	AddGutters(9);
     	AddSpareAsLastFrame(4,8);
+
+    	TS_ASSERT_EQUALS(_uut->Score(), 26);
+
+    }
+
+    void testStrikeAsLastFrame()
+    {
+    	AddGutters(9);
+    	AddStrikeAsLastFrame(8);
 
     	TS_ASSERT_EQUALS(_uut->Score(), 26);
 
@@ -82,6 +93,11 @@ private:
     {
    		_uut->AddFrame(10, 0);
     }
+    void AddStrikeAsLastFrame(unsigned char extraBallScore)
+    {
+   		_uut->AddStrikeAsLastFrame(extraBallScore);
+    }
+
 
     void AddFrame(unsigned char first, unsigned char second)
     {
