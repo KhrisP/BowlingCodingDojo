@@ -1,5 +1,7 @@
 #include "game.h"
 
+#include "frame.h"
+
 #ifndef GAMETESTS
 #define GAMETESTS
 
@@ -18,7 +20,7 @@ public:
 
     void testScoreIs0WithOnlyGutters(void)
     {
-    	AddGutters(10);
+    	AddGutters(BowlingGame::Game::MAX_FRAMES);
 
     	TS_ASSERT_EQUALS(_uut->Score(), 0);
     }
@@ -28,7 +30,7 @@ public:
 		_uut->AddFrame(1, 1);
 		_uut->AddFrame(2, 2);
 		_uut->AddFrame(3, 3);
-		AddGutters(7);
+		AddGutters(BowlingGame::Game::MAX_FRAMES - 3);
 
     	TS_ASSERT_EQUALS(_uut->Score(), 12);
 
@@ -38,7 +40,7 @@ public:
     {
     	AddSpare(4);
     	AddFrame(2, 4);
-    	AddGutters(8);
+    	AddGutters(BowlingGame::Game::MAX_FRAMES - 2);
 
     	TS_ASSERT_EQUALS(_uut->Score(), 18);
 
@@ -46,9 +48,9 @@ public:
 
     void testBonusForStrikeIsTheNext2Rolls()
     {
-    	AddStrike();
+    	AddStrikes(1);
     	AddFrame(2, 4);
-    	AddGutters(8);
+    	AddGutters(BowlingGame::Game::MAX_FRAMES - 2);
 
     	TS_ASSERT_EQUALS(_uut->Score(), 22);
 
@@ -56,7 +58,7 @@ public:
 
     void testSpareAsLastFrame()
     {
-    	AddGutters(9);
+    	AddGutters(BowlingGame::Game::MAX_FRAMES - 1);
     	AddSpareAsLastFrame(4,8);
 
     	TS_ASSERT_EQUALS(_uut->Score(), 26);
@@ -65,7 +67,7 @@ public:
 
     void testStrikeAsLastFrame()
     {
-    	AddGutters(9);
+    	AddGutters(BowlingGame::Game::MAX_FRAMES - 1);
     	AddStrikeAsLastFrame(8);
 
     	TS_ASSERT_EQUALS(_uut->Score(), 26);
@@ -74,7 +76,7 @@ public:
 
     void testMaximumScoreIs300()
     {
-    	AddStrikes(9);
+    	AddStrikes(BowlingGame::Game::MAX_FRAMES - 1);
     	AddStrikeAsLastFrame(10);
 
     	TS_ASSERT_EQUALS(_uut->Score(), 300);
@@ -92,22 +94,18 @@ private:
     void AddStrikes(unsigned char number)
     {
     	for(auto roll=0; roll<number; roll++)
-    		_uut->AddFrame(10,0);
+    		_uut->AddFrame(BowlingGame::Frame::MAX_PINS, 0);
     }
 
     void AddSpare(unsigned char firstRoll)
     {
-   		_uut->AddFrame(firstRoll, 10 - firstRoll);
+   		_uut->AddFrame(firstRoll, BowlingGame::Frame::MAX_PINS - firstRoll);
     }
     void AddSpareAsLastFrame(unsigned char firstRoll, unsigned char extraBallScore)
     {
    		_uut->AddSpareAsLastFrame(firstRoll, extraBallScore);
     }
 
-    void AddStrike()
-    {
-   		_uut->AddFrame(10, 0);
-    }
     void AddStrikeAsLastFrame(unsigned char extraBallScore)
     {
    		_uut->AddStrikeAsLastFrame(extraBallScore);
