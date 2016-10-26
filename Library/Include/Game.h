@@ -26,6 +26,8 @@ public:
 private:
 
 	unsigned char GetBonusForSpare(std::size_t index) const;
+	unsigned char GetBonusForStrike(std::size_t index) const;
+
 	std::vector<Frame> _frames;
 
 

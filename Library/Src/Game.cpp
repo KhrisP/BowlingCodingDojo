@@ -24,6 +24,10 @@ unsigned char Game::Score() const
 		{
 			score += GetBonusForSpare(index);
 		}
+		if(_frames[index].IsStrike())
+		{
+			score += GetBonusForStrike(index);
+		}
 
 	}
 	return score;
@@ -39,6 +43,23 @@ unsigned char Game::GetBonusForSpare(std::size_t index) const
 	bool nextFrameAvailable = index < _frames.size();
 
 	return nextFrameAvailable ? _frames[index + 1].FirstRoll() : 0;
+}
+
+unsigned char Game::GetBonusForStrike(std::size_t index) const
+{
+	bool isNotTheLastFrame = index < _frames.size();
+	bool isBeforeTheSecondToLastFrame = index < _frames.size() - 1;
+	unsigned char bonus = 0;
+
+	if(isNotTheLastFrame)
+	{
+		bonus = _frames[index + 1].Score();
+		if(_frames[index + 1].IsStrike() && isBeforeTheSecondToLastFrame)
+		{
+			bonus += _frames[index + 2].FirstRoll();
+		}
+	}
+	return bonus;
 }
 
 }

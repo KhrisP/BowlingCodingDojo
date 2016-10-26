@@ -34,13 +34,22 @@ public:
 
     }
 
-    void testBonusOfNextFirstRollIsAddedForSpare()
+    void testBonusForSpareIsTheNextRoll()
     {
     	AddSpare(4);
     	AddFrame(2, 4);
     	AddGutters(8);
 
     	TS_ASSERT_EQUALS(_uut->Score(), 18);
+
+    }
+    void testBonusForStrikeIsTheNext2Rolls()
+    {
+    	AddStrike();
+    	AddFrame(2, 4);
+    	AddGutters(8);
+
+    	TS_ASSERT_EQUALS(_uut->Score(), 22);
 
     }
 
@@ -55,6 +64,11 @@ private:
     void AddSpare(unsigned char firstRoll)
     {
    		_uut->AddFrame(firstRoll, 10 - firstRoll);
+    }
+
+    void AddStrike()
+    {
+   		_uut->AddFrame(10, 0);
     }
 
     void AddFrame(unsigned char first, unsigned char second)
